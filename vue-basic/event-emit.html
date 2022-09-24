@@ -11,6 +11,8 @@
     <div id="app">
         <!-- v-on:하위 컴포넌트의 이벤트 이름="상위 컴포넌트 메소드 이름"-->
         <app-header v-on:pass="logText"></app-header>
+        <app-content v-on:increase="increaseNumber"></app-content>
+        <h1>{{num}}</h1>
     </div>
     <script>
         const appHeader = {
@@ -21,15 +23,30 @@
                 }
             }
         }
+        const appContent = {
+            template : '<button v-on:click="addEvent">add</button>',
+            methods: {
+                addEvent: function () {
+                    this.$emit('increase')
+                }
+            }
+        }
         new Vue({
             el: '#app',
             components: {
-                'app-header' : appHeader
+                'app-header' : appHeader,
+                'app-content' : appContent
             },
             methods: {
                 logText: function() { 
                     console.log('hi');
+                },
+                increaseNumber: function() {
+                   this.num = this.num + 1
                 }
+            },
+            data: {
+                num : 10
             }
         })
     </script>
