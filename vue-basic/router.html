@@ -9,14 +9,41 @@
     <title>Router</title>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <router-link to="/login">login</router-link>
+        <router-link to="/main">main</router-link>
+        <router-view></router-view>
+    </div>
    <script>
-    new VueRouter({
-
+    const LoginComponent = {
+        template: '<div>Login</div>',
+    }
+    const MainComponent = {
+        template: '<div>Main</div>'
+    }
+    const ddd = {
+        template: '<h1>ddd</h1>'
+    }
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/',
+                component: ddd
+            },
+            {
+                path: '/login',
+                component: LoginComponent
+            },
+            {
+                path: '/main',
+                component: MainComponent
+            }
+        ]
     })
 
     new Vue({
         el: '#app',
+        router: router,
     })
    </script>
 
