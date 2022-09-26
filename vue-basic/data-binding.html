@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
     <title>dataBinding</title>
 </head>
 <body>
     <div id="app">
-        <div>{{num}}</div>
+        <p>{{num}}</p>
         <div>{{doubleNum}}</div>
+        <div v-if="loading">
+            Loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show>
+            Loading...
+        </div>
+        <input type="text" v-model="message">
+        <p>{{ message}}</p>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                num : 10
+                num : 10,
+                name : 'Jay',
+                uuid: 'abc1234',
+                loading: false,
+                message: '',
             },
             computed: {
                 doubleNum: function() {
