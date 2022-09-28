@@ -1,6 +1,6 @@
 <template>
   <div>
-  <app-header></app-header>
+  <app-header v-bind:propsdata="str"></app-header>
   </div>
 </template>
 
